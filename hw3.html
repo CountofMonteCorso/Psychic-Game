@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Mewtwo's Psychic Game</title>
+
+</head>
+
+<body>
+	<h1> Mewtwo's Psychic Test </h1>
+	<h2> Try to guess which single-digit number I'm thinking of.</h2>
+
+	<div id="game"> Just press a number on your keyboard... </div>
+
+	<script type="text/javascript">
+
+		var computerChoices = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+		
+		var wins = 0;
+	    var losses = 0;
+	    var guessesLeft = 5;
+
+	    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+	    	     console.log(computerGuess);
+
+
+	    document.onkeyup = function(event) {
+
+	     var userGuess = event.key;
+
+	     console.log(event.key);
+	     
+
+
+	    	if (userGuess === computerGuess) {
+	    		console.log("here");
+	    		wins++;
+	    		restart()
+	   		 }
+
+		    else {
+		    	losses++;
+		    	guessesLeft--;
+		    		//restart ()
+		    		if (guessesLeft === 0) {
+		    			alert("you suuuuck lol");
+		    			restart()
+		    		}
+		    }
+
+	        var html =
+	          "<p>You chose: " + userGuess + "</p>" +
+	          "<p>The computer chose: " + computerGuess + "</p>" +
+	          "<p>Guesses Remaining: " + guessesLeft+
+	          "<p>wins: " + wins + "</p>" +
+	          "<p>losses: " + losses + "</p>";
+
+	           document.querySelector("#game").innerHTML = html;
+	    }
+
+	    function restart () {
+	    	computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+	    		guessesLeft = 5
+	    }
+
+	</script>
+
+</body>
+
+
+</html>
